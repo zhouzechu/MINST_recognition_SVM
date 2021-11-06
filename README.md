@@ -1,0 +1,1 @@
+# MINST_recognition_SVM
