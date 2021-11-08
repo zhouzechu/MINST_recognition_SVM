@@ -3,7 +3,7 @@ import struct
 import numpy as np
 
 def load_mnist(path, kind):
-    """Load MNIST data from path"""
+    # Load MNIST data from path
     if kind == 'train':  # build path of differnt mode such as train and test
         labels_path = os.path.join(path,
                                '%s-labels.idx1-ubyte'
