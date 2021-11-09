@@ -3,11 +3,12 @@ from sklearn import svm
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 import _pickle as pickle
-import utils
 import matplotlib.image as image
 from sys import argv
 import cv2
-import load_data
+
+import utils  # import the package in the project
+import load_data  # import the package in the project
 
 
 def train(path):
@@ -23,10 +24,10 @@ def train(path):
 
     pre_label = model.predict(img_ts_norm)  # obtain the result of model
 
-    with open('./model_lin.pkl', 'wb') as file:
+    with open('./model_lin.pkl', 'wb') as file:  # or model_rbf.pkl/model_poly.pkl
         pickle.dump(model, file)  # save the model
 
-    print('Accuracy:', np.sum(pre_label == label_ts) / label_ts.size)
+    print('Accuracy:', np.sum(pre_label == label_ts) / label_ts.size)  # calculate the accurary, the sum(pre_label == label_ts) represent the num of correct and label_ts.size represents the total num
     print(classification_report(label_ts, pre_label))  # print the report with precision, recall, F1-Score, macro average AVG and weighted average AVG
     return img_ts, pre_label, label_ts
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     if argv[1] == 'train':  # you can select different mode via command
         img_test, pre_label, label = train('C:/Users/PC/Desktop/SVM/')  # train and test 
         utils.show_result(img_test, pre_label, label)
-    elif argv[1] == 'test':
-        img_path = argv[2]
+    elif argv[1] == 'validation':  # select the mode of validation
+        img_path = argv[2]  # read the path of real image in the argument
         image_real, pre_label = test(img_path)  # validate on real image
         utils.show_real(image_real, pre_label)
