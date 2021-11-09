@@ -33,7 +33,7 @@ def train(path):
 
 def test(path):
     img_ori = image.imread(path)  # read real image
-    img_ori = img_ori.reshape(28, 28)  # reshape real image into 28*28 as same as the dateset
+    img_ori = cv2.resize(28, 28)  # reshape real image into 28*28 as same as the dateset
     img_real = cv2.cvtColor(img_ori, cv2.COLOR_BGR2GRAY)  # transfer the channel of real image from 3 into 1
     img = img_real.reshape(1, 784)  # reshape real image into 28*28=784 vector
     ss = StandardScaler()  # normalization
@@ -50,5 +50,6 @@ if __name__ == '__main__':
         img_test, pre_label, label = train('C:/Users/PC/Desktop/SVM/')  # train and test 
         utils.show_result(img_test, pre_label, label)
     elif argv[1] == 'test':
-        image_real, pre_label = test('C:/Users/PC/Desktop/SVM/4.png')  # validate on real image
+        img_path = argv[2]
+        image_real, pre_label = test(img_path)  # validate on real image
         utils.show_real(image_real, pre_label)
