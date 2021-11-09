@@ -10,4 +10,4 @@ If you want to validate on real image, you have to write down the path of image 
 ```python
 python main.py validation [path]
 ```
-*prepared for the Machine Learning Course in FAET*
+*Prepared for the Machine Learning Course in FAET*
