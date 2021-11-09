@@ -1,7 +1,7 @@
 import random
 import matplotlib.pyplot as plt
 
-# build utils for showing results
+# Build utils for showing results
 def show_result(img_test, pre_label, label):
     fig, ax = plt.subplots(  # build a plot with 10 subplots
         nrows=2,  # rows of plot
