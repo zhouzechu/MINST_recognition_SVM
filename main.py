@@ -48,7 +48,8 @@ def test(path):
 
 if __name__ == '__main__':
     if argv[1] == 'train':  # you can select different mode via command
-        img_test, pre_label, label = train('C:/Users/PC/Desktop/SVM/')  # train and test 
+        dataset_path = argv[2]  # read the path of dataset in the argument
+        img_test, pre_label, label = train(dataset_path)  # train and test 
         utils.show_result(img_test, pre_label, label)
     elif argv[1] == 'validation':  # select the mode of validation
         img_path = argv[2]  # read the path of real image in the argument
